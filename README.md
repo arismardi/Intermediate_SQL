@@ -61,3 +61,29 @@ ON c.id = t.campaign_id
 AND upper(t.status) = 'VERIFIED'
 GROUP BY c.id, c.title, c.description
 
+- DDL
+
+CREATE TABLE `transaction` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`campaign_id` BIGINT(20) NULL DEFAULT NULL,
+	`amount` DECIMAL(12,0) NULL DEFAULT NULL,
+	`status` VARCHAR(50) NULL DEFAULT 'PENDING' ,
+	INDEX `Index 1` (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;
+
+CREATE TABLE `campaign` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`description` VARCHAR(50) NULL DEFAULT NULL,
+	`image_path` VARCHAR(100) NULL DEFAULT NULL,
+	`amount_donation` DECIMAL(10,0) NULL DEFAULT NULL,
+	`status` VARCHAR(20) NULL DEFAULT 'DRAFT',
+	INDEX `Index 1` (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;
+
